@@ -1,0 +1,44 @@
+<mat-toolbar  class="mat-toolbar mat-primary mat-toolbar-single-row" color="primary">
+  <a  href="/">
+    <img alt="Soracom" class="console-logo" height="30" src="../../../assets/logo_soracom_head.png">
+  </a>
+</mat-toolbar>
+
+
+<mat-card class="card card-header">
+  <mat-card-content class="card card-content">
+    <h2>DEMO Console Login</h2>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="card card-body">
+  <mat-card-content>
+    <form [formGroup]="loginformgroup" (ngSubmit)="login()">
+
+      <mat-form-field class="input-width">
+        <input matInput placeholder="オペレーターID" formControlName="operatorid">
+      </mat-form-field>
+
+      <mat-form-field class="input-width">
+        <input matInput placeholder="ユーザー名" formControlName="username">
+      </mat-form-field>
+
+      <mat-form-field class="input-width">
+        <input matInput placeholder="パスワード" type="password" formControlName="password">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="login-button" [disabled]="loginformgroup.invalid">Login</button>
+    </form>
+
+
+    <button _ngcontent-c9="" class="google-button mat-button" mat-button="" (click)="login()">
+      <span class="mat-button-wrapper"></span>
+      <div class="mat-button-ripple mat-ripple" matripple=""></div>
+      <div class="mat-button-focus-overlay"></div>
+    </button>
+
+  </mat-card-content>
+</mat-card>
+<!-- 
+<button mat-raised-button class="create-account-btn" routerLink="/signup">アカウントを新規作成</button>
+-->
