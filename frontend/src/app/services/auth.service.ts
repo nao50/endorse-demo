@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
 import { map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
+// Service
+import { EndorseService } from './endorse.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,10 +18,10 @@ export class AuthService {
   constructor(
     private router: Router,
     private http: HttpClient,
+    private endorseService: EndorseService,
   ) { }
 
   basiclogin(username: string, password: string): Observable<boolean> {
-    console.log('CALLED');
     const url = 'http://localhost:8080/basiclogin';
     const httpOptions = {
       headers: new HttpHeaders({
@@ -44,6 +47,17 @@ export class AuthService {
         })
       );
   }
+
+  // tokenlogin(username: string, password: string): Observable<boolean> {
+  tokenlogin() {
+    this.endorseService.getEndorseToken()
+    .subscribe(result => {
+      console.log('AAAAAAAA result : ', result);
+    }
+    );
+
+  }
+
 
   logout() {
     localStorage.removeItem('token');

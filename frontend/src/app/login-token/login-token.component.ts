@@ -33,18 +33,18 @@ export class LoginTokenComponent implements OnInit {
   ngOnInit() {
   }
 
-  basiclogin() {
+  tokenlogin() {
     this.loading = true;
-    this.authService.basiclogin(this.loginformgroup.value.username, this.loginformgroup.value.password)
-    .subscribe(result => {
-        if (result === true) {
-          this.router.navigate(['']);
-        } else {
-          this.loading = false;
-          this.error = true;
-        }
-      }
-    );
+    this.authService.tokenlogin();
+    // .subscribe(result => {
+    //     if (result === true) {
+    //       this.router.navigate(['']);
+    //     } else {
+    //       this.loading = false;
+    //       this.error = true;
+    //     }
+    //   }
+    // );
   }
 
 
