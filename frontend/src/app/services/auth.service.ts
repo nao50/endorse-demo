@@ -49,7 +49,7 @@ export class AuthService {
   }
 
 
-  tokenlogin(): Observable<boolean> {
+  tokenlogin(endorseToken: string): Observable<boolean> {
     this.endorseService.getEndorseToken()
     .subscribe(result => {
       localStorage.setItem('endorseToken', result.token);
@@ -57,7 +57,7 @@ export class AuthService {
 
 
     const url = 'http://localhost:8080/tokenlogin';
-    const endorseToken = localStorage.getItem('endorseToken');
+    // const endorseToken = localStorage.getItem('endorseToken');
     const httpOptions = {
       headers: new HttpHeaders({
       'Content-Type': 'application/json',

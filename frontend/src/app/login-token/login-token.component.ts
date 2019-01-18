@@ -44,21 +44,32 @@ export class LoginTokenComponent implements OnInit {
     this.endorseService.getEndorseToken()
     .subscribe(result => {
       this.endorseToken = result.token;
-      console.log(this.endorseToken);
+
+      // console.log(this.endorseToken);
+
+      this.authService.tokenlogin(this.endorseToken)
+      .subscribe(result2 => {
+          if (result2 === true) {
+            this.router.navigate(['top']);
+          } else {
+            this.loading = false;
+            this.error = true;
+          }
+        }
+      );
     });
 
-    console.log(this.endorseToken);
-    
-    this.authService.tokenlogin()
-    .subscribe(result => {
-        if (result === true) {
-          this.router.navigate(['top']);
-        } else {
-          this.loading = false;
-          this.error = true;
-        }
-      }
-    );
+    // this.authService.tokenlogin()
+    // .subscribe(result => {
+    //     if (result === true) {
+    //       this.router.navigate(['top']);
+    //     } else {
+    //       this.loading = false;
+    //       this.error = true;
+    //     }
+    //   }
+    // );
+
   }
 
 
