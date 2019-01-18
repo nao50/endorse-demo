@@ -4,6 +4,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { Router } from '@angular/router';
 
+// Service
+import { EndorseService } from '../services/endorse.service';
+
 @Component({
   selector: 'app-login-token',
   templateUrl: './login-token.component.html',
@@ -12,6 +15,7 @@ import { Router } from '@angular/router';
 export class LoginTokenComponent implements OnInit {
   loading = false;
   error = false;
+  endorseToken = '';
 
   loginformgroup = new FormGroup({
     // 'username': new FormControl('', [
@@ -28,6 +32,7 @@ export class LoginTokenComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
+    private endorseService: EndorseService,
   ) { }
 
   ngOnInit() {
@@ -35,10 +40,17 @@ export class LoginTokenComponent implements OnInit {
 
   tokenlogin() {
     this.loading = true;
+
+    this.endorseService.getEndorseToken()
+    .subscribe(result => {
+      this.endorseToken = result.token;
+      console.log(this.endorseToken);
+    });
+
+    console.log(this.endorseToken);
+    
     this.authService.tokenlogin()
     .subscribe(result => {
-      console.log('CALLEDDDD');
-      console.log(result);
         if (result === true) {
           this.router.navigate(['top']);
         } else {
