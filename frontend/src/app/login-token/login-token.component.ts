@@ -45,10 +45,11 @@ export class LoginTokenComponent implements OnInit {
     .subscribe(result => {
       this.endorseToken = result.token;
 
-      // console.log(this.endorseToken);
+      console.log('this.endorseToken: ', this.endorseToken);
 
       this.authService.tokenlogin(this.endorseToken)
       .subscribe(result2 => {
+          console.log('result2: ', result2);
           if (result2 === true) {
             this.router.navigate(['top']);
           } else {
