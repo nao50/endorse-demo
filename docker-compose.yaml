@@ -4,19 +4,13 @@ services:
     build: ./backend
     command: go run main.go
     volumes:
-      - .:/app
+      - ./backend:/app
     ports:
       - 8080:8080
-    links:
-      - frontend
   frontend:
-    image: ./frontend
-    build: .
+    build: ./frontend
     command: bash -c "npm install && ng serve --host 0.0.0.0"
     volumes:
-      - .:/app
-      - /app/node_modules/
+      - ./frontend:/app
     ports:
       - "4200:4200"
-    links:
-      - backend
