@@ -14,17 +14,8 @@
 <mat-card class="card card-body">
   <mat-card-content>
 
-    <button mat-raised-button color="primary" class="login-button" (click)="getEndorseToken()">Get Endorse Token</button>
-
-    <form [formGroup]="loginformgroup" (ngSubmit)="tokenlogin()">
-      <button mat-raised-button color="primary" class="login-button" [disabled]="loginformgroup.invalid">Login</button>
-    </form>
-
-    <!-- <button _ngcontent-c9="" class="google-button mat-button" mat-button="" (click)="tokenlogin()">
-      <span class="mat-button-wrapper"></span>
-      <div class="mat-button-ripple mat-ripple" matripple=""></div>
-      <div class="mat-button-focus-overlay"></div>
-    </button> -->
+    <button mat-raised-button color="accent" class="login-button" (click)="getEndorseToken()">Get Endorse Token</button>
+    <button mat-raised-button color="primary" class="login-button" (click)="tokenlogin()">Login</button>
 
   </mat-card-content>
 </mat-card>

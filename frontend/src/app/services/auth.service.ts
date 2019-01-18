@@ -63,7 +63,6 @@ export class AuthService {
       httpOptions
     ).pipe(
         map(response => {
-          console.log('response', response);
           const token = response['token'];
           if (token) {
             localStorage.setItem('token', token);
