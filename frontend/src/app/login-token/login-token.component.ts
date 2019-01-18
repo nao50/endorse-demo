@@ -18,15 +18,6 @@ export class LoginTokenComponent implements OnInit {
   endorseToken = '';
 
   loginformgroup = new FormGroup({
-    // 'username': new FormControl('', [
-    //   Validators.required,
-    //   Validators.maxLength(255),
-    // ]),
-    // 'password': new FormControl('', [
-    //   Validators.required,
-    //   Validators.minLength(5),
-    //   Validators.maxLength(72),
-    // ]),
   });
 
   constructor(
@@ -36,41 +27,25 @@ export class LoginTokenComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // this.logout();
   }
 
   tokenlogin() {
     this.loading = true;
-
     this.endorseService.getEndorseToken()
     .subscribe(result => {
       this.endorseToken = result.token;
 
-      console.log('this.endorseToken: ', this.endorseToken);
-
       this.authService.tokenlogin(this.endorseToken)
       .subscribe(result2 => {
-          console.log('result2: ', result2);
           if (result2 === true) {
-            this.router.navigate(['top']);
+            this.router.navigate(['app-token-top']);
           } else {
             this.loading = false;
             this.error = true;
           }
-        }
-      );
+      });
     });
-
-    // this.authService.tokenlogin()
-    // .subscribe(result => {
-    //     if (result === true) {
-    //       this.router.navigate(['top']);
-    //     } else {
-    //       this.loading = false;
-    //       this.error = true;
-    //     }
-    //   }
-    // );
-
   }
 
 

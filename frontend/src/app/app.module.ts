@@ -35,13 +35,17 @@ import { AppComponent } from './app.component';
 import { TopComponent } from './top/top.component';
 import { LoginTokenComponent } from './login-token/login-token.component';
 import { LoginBasicComponent } from './login-basic/login-basic.component';
+import { BasicTopComponent } from './basic-top/basic-top.component';
+import { TokenTopComponent } from './token-top/token-top.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopComponent,
     LoginTokenComponent,
-    LoginBasicComponent
+    LoginBasicComponent,
+    BasicTopComponent,
+    TokenTopComponent
   ],
   imports: [
     BrowserModule,

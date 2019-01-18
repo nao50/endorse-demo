@@ -39,7 +39,7 @@ export class LoginBasicComponent implements OnInit {
     this.authService.basiclogin(this.loginformgroup.value.username, this.loginformgroup.value.password)
     .subscribe(result => {
         if (result === true) {
-          this.router.navigate(['top']);
+          this.router.navigate(['app-basic-top']);
         } else {
           this.loading = false;
           this.error = true;
