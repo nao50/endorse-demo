@@ -37,6 +37,8 @@ export class LoginTokenComponent implements OnInit {
     this.loading = true;
     this.authService.tokenlogin()
     .subscribe(result => {
+      console.log('CALLEDDDD');
+      console.log(result);
         if (result === true) {
           this.router.navigate(['top']);
         } else {
