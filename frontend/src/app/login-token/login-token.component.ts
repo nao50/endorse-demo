@@ -27,26 +27,48 @@ export class LoginTokenComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.logout();
+  }
+
+  getEndorseToken() {
+    this.endorseService.getEndorseToken()
+    .subscribe(result => {
+      console.log('result: ', result);
+      localStorage.setItem('endorseToken', result.token);
+    });
   }
 
   tokenlogin() {
     this.loading = true;
-    this.endorseService.getEndorseToken()
-    .subscribe(result => {
-      this.endorseToken = result.token;
+    const endorseToken = localStorage.getItem('endorseToken');
 
-      this.authService.tokenlogin(this.endorseToken)
-      .subscribe(result2 => {
-          if (result2 === true) {
-            this.router.navigate(['app-token-top']);
-          } else {
-            this.loading = false;
-            this.error = true;
-          }
-      });
+    this.authService.tokenlogin(this.endorseToken)
+    .subscribe(result => {
+        if (result === true) {
+          this.router.navigate(['app-token-top']);
+        } else {
+          this.loading = false;
+          this.error = true;
+        }
     });
   }
+
+  // tokenlogin() {
+  //   this.loading = true;
+  //   this.endorseService.getEndorseToken()
+  //   .subscribe(result => {
+  //     this.endorseToken = result.token;
+
+  //     this.authService.tokenlogin(this.endorseToken)
+  //     .subscribe(result2 => {
+  //         if (result2 === true) {
+  //           this.router.navigate(['app-token-top']);
+  //         } else {
+  //           this.loading = false;
+  //           this.error = true;
+  //         }
+  //     });
+  //   });
+  // }
 
 
   logout() {
