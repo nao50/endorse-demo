@@ -14,15 +14,15 @@ export class LoginTokenComponent implements OnInit {
   error = false;
 
   loginformgroup = new FormGroup({
-    'username': new FormControl('', [
-      Validators.required,
-      Validators.maxLength(255),
-    ]),
-    'password': new FormControl('', [
-      Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(72),
-    ]),
+    // 'username': new FormControl('', [
+    //   Validators.required,
+    //   Validators.maxLength(255),
+    // ]),
+    // 'password': new FormControl('', [
+    //   Validators.required,
+    //   Validators.minLength(5),
+    //   Validators.maxLength(72),
+    // ]),
   });
 
   constructor(
@@ -35,16 +35,16 @@ export class LoginTokenComponent implements OnInit {
 
   tokenlogin() {
     this.loading = true;
-    this.authService.tokenlogin();
-    // .subscribe(result => {
-    //     if (result === true) {
-    //       this.router.navigate(['']);
-    //     } else {
-    //       this.loading = false;
-    //       this.error = true;
-    //     }
-    //   }
-    // );
+    this.authService.tokenlogin()
+    .subscribe(result => {
+        if (result === true) {
+          this.router.navigate(['top']);
+        } else {
+          this.loading = false;
+          this.error = true;
+        }
+      }
+    );
   }
 
 

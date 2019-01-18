@@ -31,6 +31,7 @@ export class LoginBasicComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.logout();
   }
 
   basiclogin() {
