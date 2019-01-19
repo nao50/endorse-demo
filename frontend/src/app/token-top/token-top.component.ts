@@ -25,6 +25,7 @@ export class TokenTopComponent implements OnInit {
   getTokenData() {
     this.dataService.getTokenData().subscribe(
       result => {
+        console.log(result);
         this.data = result;
       },
       error => {
