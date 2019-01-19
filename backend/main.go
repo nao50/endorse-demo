@@ -79,11 +79,12 @@ func tokenroute(c echo.Context) error {
 	claims := user.Claims.(jwt.MapClaims)
 	imsi := claims["imsi"].(string)
 	imei := claims["imei"].(string)
-	// return c.String(http.StatusOK, "Welcome "+imsi+"!")
+	msisdn := claims["msisdn"].(string)
 
 	return c.JSON(http.StatusOK, map[string]string{
-		"imsi": imsi,
-		"imei": imei,
+		"imsi":   imsi,
+		"imei":   imei,
+		"msisdn": msisdn,
 	})
 }
 

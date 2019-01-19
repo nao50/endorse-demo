@@ -31,6 +31,7 @@ export class LoginTokenComponent implements OnInit {
   getEndorseToken() {
     this.endorseService.getEndorseToken()
     .subscribe(result => {
+      console.log('endorseToken: ', result.token);
       localStorage.setItem('endorseToken', result.token);
     });
   }

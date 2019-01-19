@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
-
-import { map, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
 
 // Model
 import { EndorseToken } from '../models/endorsetoken.model';
@@ -15,7 +11,6 @@ import { EndorseToken } from '../models/endorsetoken.model';
 export class EndorseService {
 
   constructor(
-    private router: Router,
     private http: HttpClient,
   ) { }
 

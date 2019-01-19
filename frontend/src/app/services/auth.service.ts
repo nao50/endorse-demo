@@ -80,6 +80,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('endorseToken');
     this.router.navigate(['loginbasic']);
   }
 }
