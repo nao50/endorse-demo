@@ -61,8 +61,7 @@ export class AuthService {
       url,
       JSON.stringify({dummy: 'dummy body message'}),
       httpOptions
-    ).pipe(
-        map(response => {
+    ).pipe(map(response => {
           const token = response['token'];
           if (token) {
             localStorage.setItem('token', token);
